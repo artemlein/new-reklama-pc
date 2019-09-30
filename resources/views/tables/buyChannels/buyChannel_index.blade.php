@@ -162,131 +162,61 @@
                     </a>
                 </div>
             </div>
+
             <!-- END PAGE TITLE-->
             <!-- END PAGE HEADER-->
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <!-- BEGIN SAMPLE TABLE PORTLET-->
-                    <div class="portlet box blue">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                <i class="fa fa-comments"></i>Contextual Rows </div>
-                            <div class="tools">
-                                <a href="javascript:;" class="collapse"> </a>
-                                <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                <a href="javascript:;" class="reload"> </a>
-                                <a href="javascript:;" class="remove"> </a>
-                            </div>
-                        </div>
+                    <div class="portlet box">
+
                         <div class="portlet-body">
                             <div class="table-scrollable">
-                                <table class="table table-bordered table-hover">
+                                <table class="table table-hover">
                                     <thead>
                                     <tr>
                                         <th> # </th>
-                                        <th> Class Name </th>
-                                        <th> Column </th>
-                                        <th> Column </th>
-                                        <th> Column </th>
+                                        <th> Name Channel </th>
+                                        <th> Name Vk </th>
+                                        <th> </th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="active">
-                                        <td> 1 </td>
-                                        <td> active </td>
-                                        <td> Column heading </td>
-                                        <td> Column heading </td>
-                                        <td> Column heading </td>
-                                    </tr>
-                                    <tr class="success">
-                                        <td> 2 </td>
-                                        <td> success </td>
-                                        <td> Column heading </td>
-                                        <td> Column heading </td>
-                                        <td> Column heading </td>
-                                    </tr>
-                                    <tr class="warning">
-                                        <td> 3 </td>
-                                        <td> warning </td>
-                                        <td> Column heading </td>
-                                        <td> Column heading </td>
-                                        <td> Column heading </td>
-                                    </tr>
-                                    <tr class="danger">
-                                        <td> 4 </td>
-                                        <td> danger </td>
-                                        <td> Column heading </td>
-                                        <td> Column heading </td>
-                                        <td> Column heading </td>
-                                    </tr>
+                                    @foreach($channels as $item)
+                                        @if ($item->status === 0)
+                                            <tr class="danger">
+                                        @elseif($item->status === 1)
+                                            <tr class="warning">
+                                        @elseif($item->status === 2)
+                                            <tr class="success">
+                                        @endif
+
+                                            <td> 1 </td>
+                                            <td><A href="{{ $item->url_channel }}" target="_blank">{{ $item->name_channel }}</A> </td>
+                                            <td><A href="{{ $item->url_vk }}" target="_blank">{{ $item->name_vk }}</A> </td>
+                                            <td>
+                                                @if($item->status == 0)
+                                                    <span class="label label-sm label-danger"> Отписать </span>
+                                                @elseif($item->status == 1)
+                                                    <span class="label label-sm label-warning"> Ожидание </span>
+                                                @elseif($item->status == 2)
+                                                    <span class="label label-sm label-success"> Выпустил </span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
                                     </tbody>
                                 </table>
+                                <example-component></example-component>
                             </div>
                         </div>
+
                     </div>
+
                     <!-- END SAMPLE TABLE PORTLET-->
                 </div>
-                <div class="col-md-6">
-                    <!-- BEGIN SAMPLE TABLE PORTLET-->
-                    <div class="portlet box yellow">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                <i class="fa fa-comments"></i>Contextual Columns </div>
-                            <div class="tools">
-                                <a href="javascript:;" class="collapse"> </a>
-                                <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                <a href="javascript:;" class="reload"> </a>
-                                <a href="javascript:;" class="remove"> </a>
-                            </div>
-                        </div>
-                        <div class="portlet-body">
-                            <div class="table-scrollable">
-                                <table class="table table-bordered table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th> # </th>
-                                        <th> Column </th>
-                                        <th> Column </th>
-                                        <th> Column </th>
-                                        <th> Column </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td> 1 </td>
-                                        <td class="active"> active </td>
-                                        <td class="success"> success </td>
-                                        <td class="warning"> warning </td>
-                                        <td class="danger"> danger </td>
-                                    </tr>
-                                    <tr>
-                                        <td> 2 </td>
-                                        <td class="active"> active </td>
-                                        <td class="success"> success </td>
-                                        <td class="warning"> warning </td>
-                                        <td class="danger"> danger </td>
-                                    </tr>
-                                    <tr>
-                                        <td> 3 </td>
-                                        <td class="active"> active </td>
-                                        <td class="success"> success </td>
-                                        <td class="warning"> warning </td>
-                                        <td class="danger"> danger </td>
-                                    </tr>
-                                    <tr>
-                                        <td> 4 </td>
-                                        <td class="active"> active </td>
-                                        <td class="success"> success </td>
-                                        <td class="warning"> warning </td>
-                                        <td class="danger"> danger </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END SAMPLE TABLE PORTLET-->
-                </div>
+
             </div>
     <!-- END CONTAINER -->
     <!-- BEGIN FOOTER -->

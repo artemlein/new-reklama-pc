@@ -2,10 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Repository\CounterRepository;
+use App\Repository\BuyChannelRepository;
 use Illuminate\Http\Request;
 
 class BuyChannelsTableController extends Controller
 {
+    private $counterRepository;
+    private $buyChannelRepository;
+
+    public function __construct()
+    {
+        $this->counterRepository = app(CounterRepository::class);
+        $this->buyChannelRepository = app(buyChannelRepository::class);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +23,11 @@ class BuyChannelsTableController extends Controller
      */
     public function index()
     {
-        dd(__METHOD__);
+        $counts = $this->counterRepository->getCount();
+
+        $channels = $this->buyChannelRepository->getAllWithPaginate();
+
+        return view('tables.buyChannels.buyChannel_index',compact('counts','channels'));
     }
 
     /**

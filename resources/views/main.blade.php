@@ -124,6 +124,7 @@
                 </a>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <example-component></example-component>
                 <a class="dashboard-stat dashboard-stat-v2 red" href="/refresh/money">
                     <div class="visual">
                         <i class="fa fa-bar-chart-o"></i>

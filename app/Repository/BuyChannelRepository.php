@@ -99,15 +99,12 @@ class BuyChannelRepository extends CoreRepository
             'url_channel',
             'name_vk',
             'url_vk',
-            'description',
-            'subscribe',
-            'price',
+            'status',
         ];
 
         $result = $this->startConditions()
             ->select($columns)
             ->get();
-
         /*//Отношение возникает только при его вызове
         $post = $result->first();
 
